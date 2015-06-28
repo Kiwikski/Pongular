@@ -5,6 +5,10 @@ public class Ball {
 
 	private int posX = Pongular.WIDTH / 2;
 	private int posY = Pongular.HEIGHT / 2;
+	private int pongBondaryPosX = Pongular.WIDTH;
+	private int pongBondaryNegX = 0;
+	private int pongBondaryPosY = Pongular.HEIGHT;
+	private int pongBondaryNegY = 0; // The ball still bounces lower than the boundary of the screen.
 	private int velX = 2;
 	private int velY = 2;
 	private int diameter = 20;
@@ -17,8 +21,20 @@ public class Ball {
 	}
 
 	public void update() {
+		
 		posX = posX + velX;
 		posY = posY + velY;
+		
+		if ( posX > pongBondaryPosX )
+			velX = velX * -1;
+		if ( posX < pongBondaryNegX )
+			velX = velX * -1;
+		if ( posY > pongBondaryPosY )
+			velY = velY * -1;
+		if ( posY < pongBondaryNegY )
+			velY = velY * -1;
+		
+		System.out.printf("%d %d\n", posX, posY);
 	}
 
 }
