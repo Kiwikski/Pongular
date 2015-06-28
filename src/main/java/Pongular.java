@@ -54,7 +54,7 @@ public class Pongular extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		ball.update();
+		ball.update(player1.paddlePosX,player1.paddlePosY);
 		player1.update();
 	}
 
