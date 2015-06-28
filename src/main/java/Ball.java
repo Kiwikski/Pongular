@@ -56,7 +56,7 @@ public class Ball {
 //					velX = velX * -1 ;
 //					System.out.printf("3 is true\n");
 
-		System.out.printf("%d %d\n", posX, posY);
+//		System.out.printf("%d %d\n", posX, posY);
 	}
 
 }
