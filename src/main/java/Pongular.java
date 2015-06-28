@@ -54,26 +54,25 @@ public class Pongular extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		ball.update(player1.paddlePosX,player1.paddlePosY);
+		ball.update();
 		player1.update();
 	}
 
 	public void paintComponent(Graphics graphics) {
 		graphics.setColor(Color.WHITE);
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
-
 		ball.paint(graphics);
 		player1.paint(graphics);
 	}
-
+	
 	public static void main(String[] args) {
 		Pongular pongular = new Pongular();
 		pongular.start();
 	}
 
 	public void run() {
-
 		while (running) {
+			checkAllCollisions();
 			update();
 			repaint();
 			try {
@@ -82,5 +81,9 @@ public class Pongular extends JPanel implements Runnable {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void checkAllCollisions() {
+		ball.checkCollision(player1);
 	}
 }

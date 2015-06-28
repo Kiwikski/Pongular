@@ -1,11 +1,13 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Ball {
 
-	private int posX = Pongular.WIDTH / 2+250;// temporarily changed starting position to troubleshoot
-	private int posY = Pongular.HEIGHT / 2 - 50;
-	
+	private int posX = Pongular.WIDTH / 2;// temporarily changed starting position to troubleshoot
+	private int posY = Pongular.HEIGHT / 2;
+	private int speed = 2;
+	private double angle = Math.PI/2;
 	private int velX = 2;
 	private int velY = 2;
 	private int diameter = 20;
@@ -23,7 +25,7 @@ public class Ball {
 				diameter);
 	}
 
-	public void update(int paddlePosX,int paddlePosY) {
+	public void update() {
 		
 		posX = posX + velX;
 		posY = posY + velY;
@@ -37,26 +39,29 @@ public class Ball {
 			velY = velY * -1;
 		if ( posY < pongBondaryNegY )
 			velY = velY * -1;
-		
+	}
+	
+	public void checkCollision(Player player) {
 		// These statements control the collisions with the paddle of player1
-		if ( posX >= paddlePosX-10 ){
-			if(posY <=paddlePosY+25 ){
-				if( posY >= paddlePosY - 25){// had to set the paddle offset manually to make it look different than the canvas edges
+		if ( posX >= player.getPosX()-diameter/2 ){
+			if((posY <=player.getPosY()+25 ) && (posY >= player.getPosY() - 25)){
 					velX = velX * -1;
-					System.out.printf("1 is true\n");					
-				}
+			} else {
+			// if ball intersects top quarter of player, bounce back at different rate
 			}
 		}
-
-			
-
-//			if(posY>=paddlePosY)
-//				System.out.printf("2 is true\n");
-//				if(posY<=paddlePosY)
-//					velX = velX * -1 ;
-//					System.out.printf("3 is true\n");
-
-//		System.out.printf("%d %d\n", posX, posY);
 	}
-
+	
+	public void setPosX(int asdf) {
+		this.posX = asdf;
+	}
+	public int getPosX() {
+		return this.posX;
+	}
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+	public int getPosY() {
+		return this.posX;
+	}
 }
