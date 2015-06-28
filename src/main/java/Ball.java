@@ -34,7 +34,7 @@ public class Ball {
 		if ( posY < pongBondaryNegY )
 			velY = velY * -1;
 		
-		System.out.printf("%d %d\n", posX, posY);
+//		System.out.printf("%d %d\n", posX, posY);
 	}
 
 }
