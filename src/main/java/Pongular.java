@@ -54,7 +54,8 @@ public class Pongular extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		ball.update();
+		ball.update(player1.paddlePosX,player1.paddlePosY);
+		player1.update();
 	}
 
 	public void paintComponent(Graphics graphics) {
@@ -62,6 +63,7 @@ public class Pongular extends JPanel implements Runnable {
 		graphics.fillRect(0, 0, WIDTH, HEIGHT);
 
 		ball.paint(graphics);
+		player1.paint(graphics);
 	}
 
 	public static void main(String[] args) {
@@ -82,4 +84,3 @@ public class Pongular extends JPanel implements Runnable {
 		}
 	}
 }
-//hello
